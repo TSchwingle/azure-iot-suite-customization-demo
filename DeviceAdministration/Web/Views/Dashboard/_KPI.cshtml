@@ -1,0 +1,19 @@
+@using GlobalResources
+    <div>
+        <div></div>
+        <div type="text" id="kpi" name="kpi" style="font-size:24px"/>
+    </div>
+    <script src="~/Scripts/Views/Dashboard/KPI.js"></script>
+    <script type="text/javascript">
+        (function () {
+            'use strict';
+
+            var kpiSettings = {
+                targetControl: $('#kpi')
+            };
+
+            IoTApp.Dashboard.KPI.init(kpiSettings);
+        })();
+    </script>
+
+
