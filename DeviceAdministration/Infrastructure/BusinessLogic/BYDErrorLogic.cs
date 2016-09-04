@@ -21,9 +21,18 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Infr
             var result = await _errorRepository.GetErrorsAsync();
             return result;  
         }
-        public async Task GetDeviceStatusAsync()
+        public async Task<IEnumerable<BYDError>> GetLastErrorsAsync()
         {
-            
+            //假設設備一定會定時送上數據，所以這裡一定有每個設備的最新狀態
+            //為了方便，這裡我只找前五天的資料，實際上也許需要新增一個新的Method來取得最後一筆狀態碼
+            var results = await _errorRepository.GetErrorsAsync(DateTime.UtcNow.AddDays(-5), DateTime.UtcNow.AddMinutes(5));
+
+            var grouping = from item in results
+                            group item by item.DeviceId;
+            var groups = from gp in grouping
+                         select gp.OrderByDescending(item => item.Time).Take(1).FirstOrDefault();
+
+            return groups;
         }
         public async Task<BYDYearlyErrorSummaryResultModel> GetYearlyErrorsSummaryAsync()
         {

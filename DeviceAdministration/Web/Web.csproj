@@ -530,7 +530,6 @@
     <Content Include="Scripts\Views\Advanced\Advanced.js" />
     <Content Include="Scripts\Views\Dashboard\AlertHistory.js" />
     <Content Include="Scripts\Views\Dashboard\BarChart.js" />
-    <Content Include="Scripts\Views\Dashboard\BYDPane.js" />
     <Content Include="Scripts\Views\Dashboard\DashboardDevicePane.js" />
     <Content Include="Scripts\Views\Dashboard\KPI.js" />
     <Content Include="Scripts\Views\Dashboard\MapPane.js" />
@@ -680,7 +679,6 @@
     <Content Include="Views\Dashboard\_KPI.cshtml" />
     <Content Include="Views\Dashboard\_PieChart.cshtml" />
     <Content Include="Views\Dashboard\_BarChart.cshtml" />
-    <Content Include="Views\Dashboard\_BYDPane.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -30,12 +30,23 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
             get;
             set;
         }
+
+        public AlertHistoryDeviceStatus BYDDeviceStatus
+        {
+            get;
+            set;
+        }
     }
 
     public enum AlertHistoryDeviceStatus
     {
         AllClear = 0,
         Caution,
-        Critical
+        Critical,
+        BYD_Error = 3,
+        BYD_Disconnected =4,
+        BYD_StandingBy = 5,
+        BYD_Shutdown=6,
+        BYD_Unknown=7
     }
 }

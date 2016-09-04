@@ -12,5 +12,6 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Infr
         Task<IEnumerable<BYDError>> GetErrorsAsync();
         Task<BYDYearlyErrorSummaryResultModel> GetYearlyErrorsSummaryAsync();
         Task<IEnumerable<BYDError>> GetErrorsAsync(string deviceId);
+        Task<IEnumerable<BYDError>> GetLastErrorsAsync();
     }
 }

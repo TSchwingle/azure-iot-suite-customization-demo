@@ -39,7 +39,7 @@
 
                         };
 
-                        var chart2 = ($('#barChart'));
+                        var chart2 = ($(targetControl));
                         new Chart(chart2, {
                             type: 'bar',
                             data: barChartData

@@ -1,6 +1,9 @@
 ﻿using Microsoft.Azure.Devices.Applications.RemoteMonitoring.Common.Configurations;
+using Microsoft.Azure.Devices.Applications.RemoteMonitoring.Common.Repository;
+using Microsoft.Azure.Devices.Applications.RemoteMonitoring.Common.Utility;
 using Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Infrastructure.BusinessLogic;
 using Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Infrastructure.Repository;
+using Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.WebApiControllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +16,12 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
+            var config = new ConfigurationProvider();
+            
             BYDErrorLogic _bydErrorLogic = new BYDErrorLogic(
-                new BYDErrorRepository(
-                    new ConfigurationProvider()));
-            var result = _bydErrorLogic.GetYearlyErrorsSummaryAsync();
+                    new BYDErrorRepository(
+                        config));
+            var result = _bydErrorLogic.GetLastErrorsAsync();
             Console.ReadLine();
         }
     }

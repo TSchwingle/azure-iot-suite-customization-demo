@@ -284,6 +284,9 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
 
                         if (devices != null)
                         {
+                            //Michael
+                            var deviceStatusBYD = await _bydErrorLogic.GetLastErrorsAsync();
+                            //End
                             DeviceListLocationsModel locationsModel = _deviceLogic.ExtractLocationsData(devices);
                             if (locationsModel != null)
                             {
@@ -303,7 +306,7 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
                                         {
                                             continue;
                                         }
-
+                                        
                                         var deviceModel = new AlertHistoryDeviceModel()
                                         {
                                             DeviceId = locationModel.DeviceId,
@@ -325,14 +328,34 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
                                                 deviceModel.Status = AlertHistoryDeviceStatus.Caution;
                                             }
                                         }
-
+                                        //Michael
+                                        var statusDevice = deviceStatusBYD.Where(b => string.Compare(deviceModel.DeviceId, b.DeviceId, true) == 0).FirstOrDefault();
+                                        deviceModel.BYDDeviceStatus = AlertHistoryDeviceStatus.BYD_Unknown;
+                                        if (statusDevice != null) {
+                                            switch (statusDevice.StatusCode)
+                                            {
+                                                case 0:
+                                                    deviceModel.BYDDeviceStatus = AlertHistoryDeviceStatus.BYD_Error;
+                                                    break;
+                                                case 1:
+                                                    deviceModel.BYDDeviceStatus = AlertHistoryDeviceStatus.BYD_Shutdown;
+                                                    break;
+                                                case 2:
+                                                    deviceModel.BYDDeviceStatus = AlertHistoryDeviceStatus.BYD_Disconnected;
+                                                    break;
+                                                case 3:
+                                                    deviceModel.BYDDeviceStatus = AlertHistoryDeviceStatus.BYD_StandingBy;
+                                                    break;
+                                            }
+                                        }
+                                        //End
                                         deviceModels.Add(deviceModel);
                                     }
                                 }
                             }
                         }
                     }
-
+                    
                     resultsModel.Data = historyItems.Take(DISPLAYED_HISTORY_ITEMS).ToList();
                     resultsModel.Devices = deviceModels;
                     resultsModel.TotalAlertCount = historyItems.Count;

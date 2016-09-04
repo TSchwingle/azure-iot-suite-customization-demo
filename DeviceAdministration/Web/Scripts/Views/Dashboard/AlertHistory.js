@@ -131,7 +131,14 @@
                     data.devices
                 );
             }
-
+            //Michael
+            if (typeof IoTApp.Dashboard.PieChart === "object" && data) {
+                alert('test');
+                IoTApp.IoTApp.refreshData(
+                    data
+                );
+            }
+            //End
             if (refreshMilliseconds) {
                 if (timerId) {
                     clearTimeout(timerId);

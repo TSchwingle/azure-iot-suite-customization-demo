@@ -29,38 +29,41 @@
         unableToRetrieveDeviceTelemetryFromService: '@Html.JavaScriptString(Strings.UnableToRetrieveDeviceTelemetryFromService)'
     };
 </script>
-
 <div class="dashboard_content">
     <div class="dashboard_left_column">
         <div>
             @{if (!string.IsNullOrWhiteSpace(Model.MapApiQueryKey))
             {
-                <div id="deviceMap" class="dashboard_device_map">
-                    <script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
-                    <script type="text/javascript" src="~/Scripts/IoTHelperScripts.js"></script>
+                    <div id="deviceMap" class="dashboard_device_map">
+                        <script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
+                        <script type="text/javascript" src="~/Scripts/IoTHelperScripts.js"></script>
 
-                    <script src="~/Scripts/Views/Dashboard/MapPane.js"></script>
+                        <script src="~/Scripts/Views/Dashboard/MapPane.js"></script>
 
-                    <script>
+                        <script>
                         resources.alertHistoryType = "dashboard_alert_history--static_height";
-                    </script>
-                </div>
-            }
-            else
-            {
-                <img class="static_map" id="staticMap" src="~/Content/img/map_copyrights.png" alt="Map Img" />
-                <script>
+                        </script>
+                    </div>
+                }
+                else
+                {
+                    <img class="static_map" id="staticMap" src="~/Content/img/map_copyrights.png" alt="Map Img" />
+                    <script>
                     resources.alertHistoryType = "dashboard_alert_history--dynamic_height";
-                </script>
-            }
+                    </script>
+                }
             }
         </div>
+
         @{
             Html.RenderPartial("_AlertHistory");
         }
     </div>
+    <script type="text/javascript" src="~/Scripts/Views/Dashboard/PieChart.js"></script>
+
     @{
-        Html.RenderPartial("_DashboardDevicePane", Model.DeviceIdsForDropdown);
+        //Html.RenderPartial("_DashboardDevicePane", Model.DeviceIdsForDropdown);
+        Html.RenderPartial("_PieChart");
         Html.RenderPartial("_BarChart");
     }
 </div>
