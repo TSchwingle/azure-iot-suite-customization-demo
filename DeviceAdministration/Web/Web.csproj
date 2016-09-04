@@ -443,6 +443,8 @@
     <None Include="Properties\PublishProfiles\michi-byddemo2-RG - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\ChartJS\chart.js" />
     <Content Include="Scripts\ChartJS\charts\Chart.Bar.js" />
     <Content Include="Scripts\ChartJS\charts\Chart.Bubble.js" />
@@ -527,6 +529,8 @@
     <Content Include="Scripts\powerbi-visuals.all.min.js" />
     <Content Include="Scripts\Views\Advanced\Advanced.js" />
     <Content Include="Scripts\Views\Dashboard\AlertHistory.js" />
+    <Content Include="Scripts\Views\Dashboard\BarChart.js" />
+    <Content Include="Scripts\Views\Dashboard\BYDPane.js" />
     <Content Include="Scripts\Views\Dashboard\DashboardDevicePane.js" />
     <Content Include="Scripts\Views\Dashboard\KPI.js" />
     <Content Include="Scripts\Views\Dashboard\MapPane.js" />
@@ -594,6 +598,9 @@
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="test.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Actions\Index.cshtml">
       <SubType>Code</SubType>
       <BrowseToURL>~/Device/Actions</BrowseToURL>
@@ -672,6 +679,8 @@
     <Content Include="Views\Advanced\_IccidAssociation.cshtml" />
     <Content Include="Views\Dashboard\_KPI.cshtml" />
     <Content Include="Views\Dashboard\_PieChart.cshtml" />
+    <Content Include="Views\Dashboard\_BarChart.cshtml" />
+    <Content Include="Views\Dashboard\_BYDPane.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

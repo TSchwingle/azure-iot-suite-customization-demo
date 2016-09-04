@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
         private readonly IDeviceTelemetryLogic _deviceTelemetryLogic;
         private readonly IConfigurationProvider _configProvider;
 
+
         /// <summary>
         /// Initializes a new instance of the TelemetryApiController class.
         /// </summary>
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
             IDeviceTelemetryLogic deviceTelemetryLogic,
             IAlertsLogic alertsLogic,
             IDeviceLogic deviceLogic,
+            /*Michael*/IBYDErrorLogic bydErrorLogic,
             IConfigurationProvider configProvider)
         {
             if (deviceTelemetryLogic == null)
@@ -76,26 +78,42 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
             _deviceTelemetryLogic = deviceTelemetryLogic;
             _alertsLogic = alertsLogic;
             _deviceLogic = deviceLogic;
+            //Michael
+            if (bydErrorLogic == null)
+            {
+                throw new ArgumentNullException("bydErrorLogic");
+            }
+            _bydErrorLogic = bydErrorLogic;
+            //End
             _configProvider = configProvider;
         }
         #region Michael for BYD 20160902
+        private IBYDErrorLogic _bydErrorLogic = null;
         //[HttpGet]
         //https://michi-byddemo2-rg.azurewebsites.net/api/v1/telemetry/bydtelemetrydata?start=2016-09-03T00:00:00&end=2016-09-03T00:00:00
-        [Route("bydtelemetrydata")]
+        [Route("bydyearlyerrorsummary")]
         [WebApiRequirePermission(Permission.ViewTelemetry)]
-        public async Task<HttpResponseMessage> GetBYDDeviceTelemetryAsync(DateTime start, DateTime end)
+        public async Task<HttpResponseMessage> GetYearlyErrorSummaryAsync()
         {
-            var query = new DeviceListQuery
+            var result = await GetServiceResponseAsync(async () =>
             {
-                Skip = 0
-            };
-            var devices = _deviceLogic.GetDevices(query);
+                return await _bydErrorLogic.GetYearlyErrorsSummaryAsync();
+            });
 
-            HttpResponseMessage resp = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+            return result;
+        }
+        //[HttpGet]
+        //https://michi-byddemo2-rg.azurewebsites.net/api/v1/telemetry/bydtelemetrydata?start=2016-09-03T00:00:00&end=2016-09-03T00:00:00
+        [Route("byddeviceerrorsummary")]
+        [WebApiRequirePermission(Permission.ViewTelemetry)]
+        public async Task<HttpResponseMessage> GetErrorSummaryAsync()
+        {
+            var result = await GetServiceResponseAsync(async () =>
             {
-                Content = new StringContent("BYD-TEST")
-            };
-            return resp;
+                return await _bydErrorLogic.GetYearlyErrorsSummaryAsync();
+            });
+
+            return result;
         }
         #endregion
         [HttpGet]

@@ -117,6 +117,7 @@
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -133,6 +134,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogic\ActionLogic.cs" />
     <Compile Include="BusinessLogic\AlertsLogic.cs" />
+    <Compile Include="BusinessLogic\BYDErrorLogic.cs" />
     <Compile Include="BusinessLogic\CommandParameterTypeLogic.cs" />
     <Compile Include="BusinessLogic\ActionMappingLogic.cs" />
     <Compile Include="BusinessLogic\DeviceLogic.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="BusinessLogic\DeviceTypeLogic.cs" />
     <Compile Include="BusinessLogic\IActionLogic.cs" />
     <Compile Include="BusinessLogic\IAlertsLogic.cs" />
+    <Compile Include="BusinessLogic\IBYDErrorLogic.cs" />
     <Compile Include="BusinessLogic\ICommandParameterTypeLogic.cs" />
     <Compile Include="BusinessLogic\IActionMappingLogic.cs" />
     <Compile Include="BusinessLogic\IDeviceLogic.cs" />
@@ -159,6 +162,9 @@
     <Compile Include="Models\ActionMapping.cs" />
     <Compile Include="Models\ActionMappingExtended.cs" />
     <Compile Include="Models\AlertHistoryItemModel.cs" />
+    <Compile Include="Models\BYDError.cs" />
+    <Compile Include="Models\BYDMonthlyErrorSummaryModel.cs" />
+    <Compile Include="Models\BYDYearlyErrorSummaryResultModel.cs" />
     <Compile Include="Models\DeviceListQuery.cs" />
     <Compile Include="Models\DeviceListQueryResult.cs" />
     <Compile Include="Models\DeviceListLocationsModel.cs" />
@@ -189,6 +195,7 @@
     <Compile Include="Repository\ActionRepository.cs" />
     <Compile Include="Repository\AlertsRepository.cs" />
     <Compile Include="Repository\ApiRegistrationRepository.cs" />
+    <Compile Include="Repository\BYDErrorRepository.cs" />
     <Compile Include="Repository\DeviceRegistryRepository.cs" />
     <Compile Include="Repository\IActionMappingRepository.cs" />
     <Compile Include="Repository\IActionRepository.cs" />
@@ -196,6 +203,7 @@
     <Compile Include="Repository\DeviceTelemetryRepository.cs" />
     <Compile Include="Repository\IAlertsRepository.cs" />
     <Compile Include="Repository\IApiRegistrationRepository.cs" />
+    <Compile Include="Repository\IBYDErrorRepository.cs" />
     <Compile Include="Repository\IDeviceRegistryCrudRepository.cs" />
     <Compile Include="Repository\IDeviceRegistryListRepository.cs" />
     <Compile Include="Repository\IDeviceRulesRepository.cs" />

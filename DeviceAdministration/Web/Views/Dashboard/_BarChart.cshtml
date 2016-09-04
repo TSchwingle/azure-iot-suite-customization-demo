@@ -1,0 +1,21 @@
+﻿@using GlobalResources
+<script src="/Scripts/chart.js"></script>
+<script src="/Scripts/Views/Dashboard/BarChart.js"></script>
+<div>Bar Chat</div>
+<canvas id="barChart" width="250" height="250"></canvas>
+
+<script type="text/javascript">
+    (function () {
+        'use strict';
+
+        var barChartSettings = {
+            targetControl: $('#barChart'),
+            requestUrl: '/api/v1/telemetry/bydyearlyerrorsummary'
+        };
+
+        IoTApp.Dashboard.BarChart.init(barChartSettings);
+        IoTApp.Dashboard.BarChart.refreshData();
+    })();
+</script>
+
+
