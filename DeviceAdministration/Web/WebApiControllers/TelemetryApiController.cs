@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
                 throw new ArgumentNullException("alertsLogic");
             }
 
-            if(deviceLogic == null)
+            if (deviceLogic == null)
             {
                 throw new ArgumentNullException("deviceLogic");
             }
@@ -78,7 +78,26 @@ namespace Microsoft.Azure.Devices.Applications.RemoteMonitoring.DeviceAdmin.Web.
             _deviceLogic = deviceLogic;
             _configProvider = configProvider;
         }
+        #region Michael for BYD 20160902
+        //[HttpGet]
+        //https://michi-byddemo2-rg.azurewebsites.net/api/v1/telemetry/bydtelemetrydata?start=2016-09-03T00:00:00&end=2016-09-03T00:00:00
+        [Route("bydtelemetrydata")]
+        [WebApiRequirePermission(Permission.ViewTelemetry)]
+        public async Task<HttpResponseMessage> GetBYDDeviceTelemetryAsync(DateTime start, DateTime end)
+        {
+            var query = new DeviceListQuery
+            {
+                Skip = 0
+            };
+            var devices = _deviceLogic.GetDevices(query);
 
+            HttpResponseMessage resp = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+            {
+                Content = new StringContent("BYD-TEST")
+            };
+            return resp;
+        }
+        #endregion
         [HttpGet]
         [Route("dashboardDevicePane")]
         [WebApiRequirePermission(Permission.ViewTelemetry)]
