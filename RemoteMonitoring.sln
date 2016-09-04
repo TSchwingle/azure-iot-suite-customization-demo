@@ -31,11 +31,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{0869AB5C-F38C-4FF4-BB25-DF2E2EB1D6DB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{FD5C62E9-E252-4B44-9BA9-D73C37171618}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\OneDrive - Microsoft\DX\Projects\BYD\web-design.docx = ..\..\..\OneDrive - Microsoft\DX\Projects\BYD\web-design.docx
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
